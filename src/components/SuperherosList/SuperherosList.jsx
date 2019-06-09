@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.scss';
+import SuperHeroItem from '../SuperHeroItem';
 
 export default class SuperHerosList extends React.Component {
   componentDidMount() {
@@ -14,7 +15,10 @@ export default class SuperHerosList extends React.Component {
       <div className={styles.superHeroesList}>
         {superHeros && superHeros.length > 0 ? (
           superHeros.map(singleSuperHero => (
-            <p key={singleSuperHero.id}>{singleSuperHero.name}</p>
+            <SuperHeroItem
+              key={singleSuperHero.id}
+              name={singleSuperHero.name}
+            />
           ))
         ) : (
           <p>loading...</p>
