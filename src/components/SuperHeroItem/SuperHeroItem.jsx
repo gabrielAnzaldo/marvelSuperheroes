@@ -3,17 +3,20 @@ import PropTypes from 'prop-types';
 import styles from './styles.scss';
 
 export default class SuperHeroItem extends React.Component {
-  onSelectSuperhero = event => {
-    console.log('event', event);
+  onSelectSuperHero = () => {
+    const { setSelectedHero, heroData } = this.props;
+    setSelectedHero(heroData);
   };
 
   render() {
-    const { name } = this.props;
+    const {
+      heroData: { name },
+    } = this.props;
     return (
       <button
         type="button"
         className={styles.superHeroItem}
-        onClick={this.onSelectSuperhero}
+        onClick={this.onSelectSuperHero}
       >
         <div>{name}</div>
       </button>
@@ -22,5 +25,8 @@ export default class SuperHeroItem extends React.Component {
 }
 
 SuperHeroItem.propTypes = {
-  name: PropTypes.string.isRequired,
+  setSelectedHero: PropTypes.func.isRequired,
+  heroData: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 };

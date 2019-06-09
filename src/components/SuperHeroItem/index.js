@@ -1,3 +1,3 @@
-import SuperHeroItem from './SuperHeroItem';
+import SuperHeroItem from './SuperHeroItem.container';
 
 export default SuperHeroItem;
