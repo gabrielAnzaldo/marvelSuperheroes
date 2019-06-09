@@ -4,12 +4,25 @@ import styles from './styles.scss';
 
 export default class SuperHeroDetail extends React.Component {
   componentDidMount() {
-    console.log('props: ', this.props);
+    const {
+      match: {
+        params: { id },
+      },
+      selectedSuperhero,
+    } = this.props;
+    console.log('test...', id, selectedSuperhero);
   }
 
   render() {
+    const { selectedSuperhero } = this.props;
     return (
-      <div className={styles.superHeroDetail}>select your favorite hero!</div>
+      <div className={styles.superHeroDetail}>
+        {selectedSuperhero ? (
+          <div> {selectedSuperhero.name}</div>
+        ) : (
+          <div>select your favorite hero!</div>
+        )}
+      </div>
     );
   }
 }
@@ -17,7 +30,14 @@ export default class SuperHeroDetail extends React.Component {
 SuperHeroDetail.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.string,
     }).isRequired,
   }).isRequired,
+  selectedSuperhero: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }),
+};
+
+SuperHeroDetail.defaultProps = {
+  selectedSuperhero: null,
 };
