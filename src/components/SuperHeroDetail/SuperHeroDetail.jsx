@@ -20,7 +20,9 @@ const SuperHeroDetail = ({ selectedSuperhero }) => {
               <ul>
                 {selectedSuperhero.urls.map(({ url, type }) => (
                   <li key={uuidv4()}>
-                    <a href={url}>{type}</a>
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                      {type}
+                    </a>
                   </li>
                 ))}
               </ul>

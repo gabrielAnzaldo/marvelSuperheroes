@@ -10,16 +10,44 @@ export default class SuperHeroItem extends React.Component {
 
   render() {
     const {
-      heroData: { name },
+      heroData: { name, thumbnail, comics, series, events, stories },
     } = this.props;
+
     return (
-      <button
-        type="button"
-        className={styles.superHeroItem}
-        onClick={this.onSelectSuperHero}
-      >
-        <div>{name}</div>
-      </button>
+      <div>
+        <div onClick={this.onSelectSuperHero} role="presentation">
+          <div className={styles.superHeroItem}>
+            <img
+              className={styles.superHeroDetailInfoItem}
+              src={`${thumbnail.path}/portrait_xlarge.jpg`}
+              alt="hero info"
+            />
+            <div className={styles.superHeroDetailInfoItem}>
+              <b>{name}</b>
+              {/* TODO: refactor, kind of repeated logic */}
+              <div>
+                <span>appears in:</span>
+                <br />
+                <span>
+                  comics: {comics.items.length > 0 ? 'YES!' : 'NO :('}
+                </span>
+                <br />
+                <span>
+                  series: {series.items.length > 0 ? 'YES!' : 'NO :('}
+                </span>
+                <br />
+                <span>
+                  events: {events.items.length > 0 ? 'YES!' : 'NO :('}
+                </span>
+                <br />
+                <span>
+                  stories: {stories.items.length > 0 ? 'YES!' : 'NO :('}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

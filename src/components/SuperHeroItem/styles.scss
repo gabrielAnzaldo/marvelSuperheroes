@@ -1,5 +1,7 @@
 .superHeroItem {
-  display: block;
-  border: gray 1px solid;
-  margin: 5px;
+  display: flex;
+
+  .superHeroDetailInfoItem {
+    margin: 10px;
+  }
 }
