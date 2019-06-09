@@ -2,30 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles.scss';
 
-export default class SuperHeroDetail extends React.Component {
-  componentDidMount() {
-    const {
-      match: {
-        params: { id },
-      },
-      selectedSuperhero,
-    } = this.props;
-    console.log('test...', id, selectedSuperhero);
-  }
+const SuperHeroDetail = ({ selectedSuperhero }) => (
+  <div className={styles.superHeroDetail}>
+    {selectedSuperhero ? (
+      <div> {selectedSuperhero.name}</div>
+    ) : (
+      <div>select your favorite hero!</div>
+    )}
+  </div>
+);
 
-  render() {
-    const { selectedSuperhero } = this.props;
-    return (
-      <div className={styles.superHeroDetail}>
-        {selectedSuperhero ? (
-          <div> {selectedSuperhero.name}</div>
-        ) : (
-          <div>select your favorite hero!</div>
-        )}
-      </div>
-    );
-  }
-}
+export default SuperHeroDetail;
 
 SuperHeroDetail.propTypes = {
   match: PropTypes.shape({
