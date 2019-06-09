@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open",
+    "lint:js": "eslint . --ext .js,.jsx",
     "build": "webpack -p"
   },
+  "pre-commit": [
+    "lint:js"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gabrielAnzaldo/marvelSuperheroes.git"
@@ -31,13 +35,18 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.13.0",
     "html-webpack-plugin": "^3.2.0",
+    "pre-commit": "^1.2.2",
     "prettier": "1.18.2",
     "webpack": "^4.33.0",
     "webpack-cli": "^3.3.3",
     "webpack-dev-server": "^3.7.1"
   },
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.0.3",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   }
 }
